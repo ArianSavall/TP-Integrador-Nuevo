@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Equipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Partido.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Pronostico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/ResultadoEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Ronda.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Resultados.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pronostico.csv" afterDir="false" />
-    </list>
+    <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +40,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Arián Savall/Desktop/Curso java inicial/Nuevo_TP_Integrador"
   }
 }]]></component>
   <component name="RecentsManager">
