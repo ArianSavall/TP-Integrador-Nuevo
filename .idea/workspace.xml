@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="" />
+    <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/utilities/LectordeArchivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Equipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Equipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Partido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Partido.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Arián Savall/Desktop/Curso java inicial/Nuevo_TP_Integrador"
+    "last_opened_file_path": "C:/Users/Arián Savall/Desktop/Curso java inicial/TP integrador"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -51,6 +57,16 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Rutas" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Nuevo_TP_Integrador" />
+      <option name="PROGRAM_PARAMETERS" value="src\main\resources\Resultados.csv src\main\resources\pronostico.csv" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
