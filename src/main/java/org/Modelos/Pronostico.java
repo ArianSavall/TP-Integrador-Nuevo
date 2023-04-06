@@ -5,8 +5,20 @@ public class Pronostico {
     private Equipo equipo;
     private ResultadoEnum resultado;
 
-    public int puntos(){
+    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+        this.partido = partido;
+        this.equipo = equipo;
+        this.resultado = resultado;
+    }
 
-        return 0;
+    public int puntos(){
+        // this.resultado -> pred
+        ResultadoEnum resultadoReal = partido.resultado(equipo);
+        if (this.resultado.equals(resultadoReal)) {
+            return 1;
+        } else {
+            return 0;
+        }
+
     }
 }

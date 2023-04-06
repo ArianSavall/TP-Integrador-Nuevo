@@ -43,9 +43,25 @@ public class Partido {
         this.cantGoles2 = cantGoles2;
     }
 
-    public ResultadoEnum resultado(Equipo equipo){
+    public ResultadoEnum resultado(Equipo equipo) {
+        if(cantGoles1 == cantGoles2) {
+            return ResultadoEnum.EMPATE;
+        }
+        if(equipo.getNombre().equals(equipo1.getNombre())) {
+            if(cantGoles1>cantGoles2) {
+                return ResultadoEnum.GANADOR;
+            }	else {
+                return ResultadoEnum.PERDEDOR;
+            }
+        } else {
+            // como equipo no es equipo1, entonces es equipo2
+            if(cantGoles2>cantGoles1) {
+                return ResultadoEnum.GANADOR;
+            }	else {
+                return ResultadoEnum.PERDEDOR;
+            }
+        }
 
-        return null;
     }
 
 }
