@@ -1,5 +1,7 @@
 package org.Modelos;
 
+import java.util.List;
+
 public class Pronostico {
     private Partido partido;
     private Equipo equipo;
@@ -11,9 +13,33 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
+    public Partido getPartido() {
+        return partido;
+    }
+
+    public void setPartido(Partido partido) {
+        this.partido = partido;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+    public ResultadoEnum getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(ResultadoEnum resultado) {
+        this.resultado = resultado;
+    }
+
     public int puntos(){
         // this.resultado -> pred
-        ResultadoEnum resultadoReal = partido.resultado(equipo);
+        ResultadoEnum resultadoReal = partido.resultado(this.equipo);
         if (this.resultado.equals(resultadoReal)) {
             return 1;
         } else {

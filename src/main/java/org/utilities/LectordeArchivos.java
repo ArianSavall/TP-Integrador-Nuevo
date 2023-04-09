@@ -8,13 +8,13 @@ import org.Modelos.ResultadoEnum;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LectordeArchivos {
     private Path rutaResultados;
     private Path rutaPronostico;
+    private List<Partido> partidos = new ArrayList<>();
 
     public LectordeArchivos(Path rutaResultados, Path rutaPronostico) {
         this.rutaResultados = rutaResultados;
@@ -24,7 +24,6 @@ public class LectordeArchivos {
 
     public List<Partido> leerResultados() {
         List<String> lineasResultado = new ArrayList<>();
-        List<Partido> partidos = new ArrayList<>();
         try {
             lineasResultado = Files.readAllLines(rutaResultados);
         } catch (
@@ -46,7 +45,6 @@ public class LectordeArchivos {
                 partido.setCantGoles2(Integer.parseInt(campos[2]));
                 partidos.add(partido);
             }
-
         }
         return partidos;
     }
@@ -56,7 +54,6 @@ public class LectordeArchivos {
         int puntos = 0; // total puntos persona
 
         List<String> lineasPronostico = new ArrayList<>();
-        List<Partido> partidos = leerResultados();
 
         try {
             lineasPronostico = Files.readAllLines(rutaPronostico);
@@ -75,13 +72,11 @@ public class LectordeArchivos {
                 Equipo equipo2 = new Equipo(campos[4]);
                 Partido partido = null;
 
-                for (Partido partidoColumna : partidos) {
-                    if (partidoColumna.getEquipo1().getNombre(
-                    ).equals(equipo1.getNombre())
-                            && partidoColumna.getEquipo2().getNombre(
-                    ).equals(equipo2.getNombre())) {
-
-                        partido = partidoColumna;
+                for (Partido partidoList : partidos) {
+                    if (partidoList.getEquipo1().getNombre().equals(equipo1.getNombre())
+                            && partidoList.getEquipo2().getNombre().equals(equipo2.getNombre())) {
+                        
+                        partido = partidoList;
 
                     }
                 }
@@ -100,7 +95,7 @@ public class LectordeArchivos {
                     resultado = ResultadoEnum.PERDEDOR;
                 }
                 Pronostico pronostico = new Pronostico(partido, equipo, resultado);
-                // sumar los puntos correspondientes
+                //sumar los puntos correspondientes
                 puntos += pronostico.puntos();
             }
         }
