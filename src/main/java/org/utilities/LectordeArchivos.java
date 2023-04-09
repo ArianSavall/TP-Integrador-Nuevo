@@ -50,7 +50,7 @@ public class LectordeArchivos {
     }
 
 
-    public void calcularPuntos() {
+    public void calcularPuntos(List<Partido> partidos) {
         int puntos = 0; // total puntos persona
 
         List<String> lineasPronostico = new ArrayList<>();
@@ -78,25 +78,26 @@ public class LectordeArchivos {
                         
                         partido = partidoList;
 
+                        Equipo equipo = null;
+                        ResultadoEnum resultado = null;
+                        if("X".equals(campos[1])) {
+                            equipo = equipo1;
+                            resultado = ResultadoEnum.GANADOR;
+                        }
+                        if("X".equals(campos[2])) {
+                            equipo = equipo1;
+                            resultado = ResultadoEnum.EMPATE;
+                        }
+                        if("X".equals(campos[3])) {
+                            equipo = equipo1;
+                            resultado = ResultadoEnum.PERDEDOR;
+                        }
+                        Pronostico pronostico = new Pronostico(partido, equipo, resultado);
+                        //sumar los puntos correspondientes
+                        puntos += pronostico.puntos();
+
                     }
                 }
-                Equipo equipo = null;
-                ResultadoEnum resultado = null;
-                if("X".equals(campos[1])) {
-                    equipo = equipo1;
-                    resultado = ResultadoEnum.GANADOR;
-                }
-                if("X".equals(campos[2])) {
-                    equipo = equipo1;
-                    resultado = ResultadoEnum.EMPATE;
-                }
-                if("X".equals(campos[3])) {
-                    equipo = equipo1;
-                    resultado = ResultadoEnum.PERDEDOR;
-                }
-                Pronostico pronostico = new Pronostico(partido, equipo, resultado);
-                //sumar los puntos correspondientes
-                puntos += pronostico.puntos();
             }
         }
 
