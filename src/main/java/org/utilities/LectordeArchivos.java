@@ -73,10 +73,17 @@ public class LectordeArchivos {
                 Partido partido;
 
                 if(!(persona.getNombre().equals(campos[0]))) {
-                    System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje());
-                    Persona p = new Persona(campos[0], 0);
-                    persona = p;
-                    puntos = 0;
+                    if(persona.getNombre().equals("")){
+                        Persona p = new Persona(campos[0], 0);
+                        persona = p;
+                        puntos = 0;
+                    }
+                    else {
+                        System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje());
+                        Persona p = new Persona(campos[0], 0);
+                        persona = p;
+                        puntos = 0;
+                    }
                 }
 
 
