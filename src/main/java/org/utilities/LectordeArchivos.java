@@ -12,8 +12,6 @@ public class LectordeArchivos {
     private Path rutaResultados;
     private Path rutaPronostico;
     private List<Partido> partidos = new ArrayList<>();
-    private List<Persona> personas = new ArrayList<>();
-    private List<Integer> puntajes = new ArrayList<>();
 
 
     public LectordeArchivos(Path rutaResultados, Path rutaPronostico) {
@@ -51,11 +49,12 @@ public class LectordeArchivos {
 
 
     public void calcularPuntos() {
-
+        int puntos= 0;
         List<String> lineasPronostico = new ArrayList<>();
-        Persona personaStarter = new Persona ("");
-        int i=0; //para recorrer la lista puntajes
-        int k=0; //para recorrer la lista personas
+//        Persona personaStarter = new Persona ("");
+//        int i=-1; //para recorrer la lista puntajes
+//        int k=-1; //para recorrer la lista personas
+        Persona persona = new Persona("",0);
         try {
             lineasPronostico = Files.readAllLines(rutaPronostico);
         } catch (IOException e) {
@@ -69,20 +68,20 @@ public class LectordeArchivos {
                 primera = false;
             } else {
                 String[] campos = lineaPronostico.split(";");
-                Persona persona = new Persona(campos[0]);
                 Equipo equipo1 = new Equipo(campos[1]);
                 Equipo equipo2 = new Equipo(campos[5]);
                 Partido partido;
 
-                if(!(personaStarter.getNombre().equals(persona.getNombre()))) {
-                        puntajes.add(0);
-                        i += 1;
-                        personas.add(persona);
-                        System.out.println(personas.get(k).getNombre());
-                        k += 1;
+                if(!(persona.getNombre().equals(campos[0]))) {
+                    System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje());
+                    Persona p = new Persona(campos[0], 0);
+                    persona = p;
+                    puntos = 0;
+                }
 
-                    }
-                personaStarter=persona;
+
+
+
                 for (Partido partidoList : partidos) {
                     if (partidoList.getEquipo1().getNombre().equals(equipo1.getNombre())
                             && partidoList.getEquipo2().getNombre().equals(equipo2.getNombre())) {
@@ -105,16 +104,18 @@ public class LectordeArchivos {
                         }
                         Pronostico pronostico = new Pronostico(partido, equipo, resultado);
                         //sumar los puntos correspondientes
-                        //puntos+=pronostico.puntos();
+                        puntos+=pronostico.puntos();
+                        persona.setPuntaje(puntos);
 
                         }
                     }
 
             }
+
         }
 
         // mostrar los puntos
-        System.out.println("Los puntos obtenidos por el usuario fueron:");
+        System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje());
         System.out.println();
     }
 
