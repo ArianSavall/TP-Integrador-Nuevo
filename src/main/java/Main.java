@@ -12,7 +12,7 @@ public class Main {
         LectordeArchivos lectordeArchivos = new LectordeArchivos(Path.of(args[0]), Path.of(args[1]));
         List<Partido> partidos = lectordeArchivos.leerResultados();
         //Ronda puntos = new Ronda ("1", partidos);
-        lectordeArchivos.calcularPuntos(partidos);
+        lectordeArchivos.calcularPuntos();
 
 
 

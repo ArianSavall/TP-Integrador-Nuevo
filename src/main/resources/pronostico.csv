@@ -1,3 +1,9 @@
-Equipo 1; Gana 1; Empata; Gana 2; Equipo 2;
-Argentina;X;;;Arabia Saudita;
-Polonia;;X;;Mexico
+Participante; Equipo 1; Gana 1; Empata; Gana 2; Equipo 2;
+Mariana;Argentina;X;;;Arabia Saudita;
+Mariana;Polonia;;X;;Mexico;
+Mariana;Argentina;X;;;Mexico;
+Mariana;Arabia Saudita;;;X;Polonia;
+Pedro;Argentina;X;;;Arabia Saudita;
+Pedro;Polonia;;;X;Mexico;
+Pedro;Argentina;X;;;Mexico;
+Pedro;Arabia Saudita;;X;;Polonia;
