@@ -48,4 +48,12 @@ public class Pronostico {
         }
 
     }
+    public int sumarPronosticos(){
+        ResultadoEnum resultadoReal = partido.resultado(equipo);
+        if (resultado.equals(resultadoReal)) {
+            return 1 ;
+        } else {
+            return 0;
+        }
+    }
 }

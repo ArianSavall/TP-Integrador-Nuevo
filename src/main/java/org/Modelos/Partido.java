@@ -1,5 +1,7 @@
 package org.Modelos;
 
+import java.util.Objects;
+
 public class Partido {
     private Equipo equipo1;
     private Equipo equipo2;
@@ -63,5 +65,6 @@ public class Partido {
         }
 
     }
+
 
 }
