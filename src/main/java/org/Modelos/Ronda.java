@@ -3,19 +3,23 @@ package org.Modelos;
 import java.util.List;
 
 public class Ronda {
-    private String nro;
+    private Integer nro;
     private List<Partido> partidos;
 
-    public Ronda(String nro, List<Partido> partidos) {
+    public Ronda(Integer nro, List<Partido> partidos) {
         this.nro = nro;
         this.partidos = partidos;
     }
 
-    public String getNro() {
+    public Ronda(Integer nro) {
+        this.nro = nro;
+    }
+
+    public Integer getNro() {
         return nro;
     }
 
-    public void setNro(String nro) {
+    public void setNro(Integer nro) {
         this.nro = nro;
     }
 
@@ -25,5 +29,9 @@ public class Ronda {
 
     public void setPartidos(List<Partido> partidos) {
         this.partidos = partidos;
+    }
+
+    public void agregarPartidos(Partido partido){
+        this.partidos.add(partido) ;
     }
 }

@@ -4,16 +4,16 @@ public class Persona {
     private String nombre;
     private int puntaje = 0;
 
-    private int cantPronosticos = 0;
+    private int cantPronosticosAcertados = 0;
 
     public Persona(String nombre) {
         this.nombre = nombre;
     }
 
-    public Persona(String nombre, int puntaje, int cantPronosticos) {
+    public Persona(String nombre, int puntaje, int cantPronosticosAcertados) {
         this.nombre = nombre;
         this.puntaje = puntaje;
-        this.cantPronosticos = cantPronosticos;
+        this.cantPronosticosAcertados = cantPronosticosAcertados;
     }
 
     public String getNombre() {return nombre;}
@@ -24,7 +24,7 @@ public class Persona {
 
     public void setPuntaje(int puntaje) {this.puntaje = puntaje;}
 
-    public int getCantPronosticos() {return cantPronosticos;}
+    public int getCantPronosticos() {return cantPronosticosAcertados;}
 
-    public void setCantPronosticos(int cantPronosticos) {this.cantPronosticos = cantPronosticos;}
+    public void setCantPronosticos(int cantPronosticos) {this.cantPronosticosAcertados = cantPronosticos;}
 }

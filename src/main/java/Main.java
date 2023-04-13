@@ -10,9 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         LectordeArchivos lectordeArchivos = new LectordeArchivos(Path.of(args[0]), Path.of(args[1]));
-        List<Partido> partidos = lectordeArchivos.leerResultados();
+        lectordeArchivos.leerResultados();
         //Ronda puntos = new Ronda ("1", partidos);
-        lectordeArchivos.calcularPuntos();
+        lectordeArchivos.leerPronosticos();
 
 
 

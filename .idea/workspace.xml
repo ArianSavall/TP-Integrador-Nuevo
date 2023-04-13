@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Partido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Partido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Pronostico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Pronostico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Ronda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Ronda.java" afterDir="false" />
@@ -44,14 +44,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arián Savall/Desktop/Curso java inicial/Nuevo_TP_Integrador&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Arián Savall/Desktop/Proyecto-Java-main"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Arián Savall\Desktop\argentina-programa-java-ejemplo-archivos-main\Nuevo_TP_Integrador\src\main\resources" />

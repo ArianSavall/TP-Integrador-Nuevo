@@ -5,12 +5,13 @@ import java.util.List;
 public class Pronostico {
     private Partido partido;
     private Equipo equipo;
-    private ResultadoEnum resultado;
+    private Persona persona;
 
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+
+    public Pronostico(Partido partido, Equipo equipo, Persona persona) {
         this.partido = partido;
         this.equipo = equipo;
-        this.resultado = resultado;
+        this.persona = persona;
     }
 
     public Partido getPartido() {
@@ -29,14 +30,7 @@ public class Pronostico {
         this.equipo = equipo;
     }
 
-    public ResultadoEnum getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(ResultadoEnum resultado) {
-        this.resultado = resultado;
-    }
-
+    //si empatan, eqGanador = null;
     public int puntos(){
         // this.resultado -> pred
 
