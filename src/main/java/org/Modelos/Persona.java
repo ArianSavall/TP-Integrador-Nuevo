@@ -3,7 +3,6 @@ package org.Modelos;
 public class Persona {
     private String nombre;
     private int puntaje = 0;
-
     private int cantPronosticosAcertados = 0;
 
     public Persona(String nombre) {

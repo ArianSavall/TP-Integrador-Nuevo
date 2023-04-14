@@ -30,16 +30,27 @@ public class Pronostico {
         this.equipo = equipo;
     }
 
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+
     //si empatan, eqGanador = null;
-//    public int puntos(){
-//        // this.resultado -> pred
-//
-//        ResultadoEnum resultadoReal = partido.resultado(equipo);
-//        if (resultado.equals(resultadoReal)) {
-//            return 1 ;
-//        } else {
-//            return 0;
-//        }
+
+
+    public int puntos(ResultadoEnum resultado) {
+        // this.resultado -> pred
+
+        ResultadoEnum resultadoReal = partido.resultado(equipo);
+        if (resultado.equals(resultadoReal)) {
+            return 1;
+        } else {
+            return 0;
+        }
 //
 //    }
 //    public int sumarPronosticos(){
@@ -50,4 +61,5 @@ public class Pronostico {
 //            return 0;
 //        }
 //    }
+    }
 }

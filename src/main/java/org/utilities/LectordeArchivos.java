@@ -183,7 +183,6 @@ public class LectordeArchivos {
 //
 //                    }
 //                }
-//                //recorrerPartidos(equipo1, equipo2, partido, campos, puntos, cantPronosticos, persona);
 //
 //            }
 //
@@ -220,15 +219,54 @@ public class LectordeArchivos {
                 if (equipo2!=null){
                     equipo2 = new Equipo(campos[6]);
                 }
-                Ronda ronda = this.buscarRonda(Integer.parseInt(campos[0]));
 
-                if (ronda == null) {
-                    ronda = new Ronda(Integer.parseInt(campos[0]));
-
+                Ronda ronda = new Ronda(Integer.parseInt(campos[0]));
+                for (Ronda rondaLista : rondas) {
+                    if (rondaLista.getNro().equals(ronda.getNro())){
+                        ronda=rondaLista;
+                    }
                 }
 
+                Persona persona = this.buscarPersona(campos[1]);
 
-                Partido partido = new ronda.buscarPartido();
+                if(persona==null){
+                   persona= new Persona(campos[1]);
+                   this.personas.add(persona);
+                }
+
+                Partido partido = ronda.buscarPartido(equipo1, equipo2);
+                Equipo equipoPred = null;
+                ResultadoEnum resultado = null;
+
+                if("X".equals(campos[3])){
+                    equipoPred = partido.getEquipo1();
+                    resultado = ResultadoEnum.GANADOR;
+
+                }
+                if("X".equals(campos[4])){
+                    equipoPred = partido.getEquipo1();
+                    resultado = ResultadoEnum.EMPATE;
+                }
+
+                if("X".equals(campos[5])){
+                    equipoPred = partido.getEquipo1();
+                    resultado = ResultadoEnum.PERDEDOR;
+                }
+
+                //Equipo equipoPred = this.leerEquipopronosticado(campos, partido);
+
+               // Equipo equipoGanador = partido.calcularGanador(partido);
+
+                Pronostico pronostico = new Pronostico(partido, equipoPred, persona);
+
+                this.pronosticos.add(pronostico);
+
+
+
+
+
+
+
 
                 //Ronda ronda = this.buscarRonda(Integer.parseInt(campos[0]));
 
@@ -243,7 +281,20 @@ public class LectordeArchivos {
             }
         }
     }
+    /*
+    public Equipo leerEquipopronosticado(String[] campos, Partido partido){
+        if("X".equals(campos[3])){
+            return partido.getEquipo1();
+        }
+        if("X".equals(campos[5])){
+            return partido.getEquipo2();
+        }
+        return null;
+    }
+*/
 }
+
+
 
 
 
