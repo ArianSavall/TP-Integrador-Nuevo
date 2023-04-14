@@ -31,23 +31,23 @@ public class Pronostico {
     }
 
     //si empatan, eqGanador = null;
-    public int puntos(){
-        // this.resultado -> pred
-
-        ResultadoEnum resultadoReal = partido.resultado(equipo);
-        if (resultado.equals(resultadoReal)) {
-            return 1 ;
-        } else {
-            return 0;
-        }
-
-    }
-    public int sumarPronosticos(){
-        ResultadoEnum resultadoReal = partido.resultado(equipo);
-        if (resultado.equals(resultadoReal)) {
-            return 1 ;
-        } else {
-            return 0;
-        }
-    }
+//    public int puntos(){
+//        // this.resultado -> pred
+//
+//        ResultadoEnum resultadoReal = partido.resultado(equipo);
+//        if (resultado.equals(resultadoReal)) {
+//            return 1 ;
+//        } else {
+//            return 0;
+//        }
+//
+//    }
+//    public int sumarPronosticos(){
+//        ResultadoEnum resultadoReal = partido.resultado(equipo);
+//        if (resultado.equals(resultadoReal)) {
+//            return 1 ;
+//        } else {
+//            return 0;
+//        }
+//    }
 }
