@@ -16,13 +16,13 @@ public class LectordeArchivos {
     private List<Pronostico> pronosticos = new ArrayList<>();
     private List<Persona> personas = new ArrayList<>();
 
-    //?constructor
+
     public LectordeArchivos(Path rutaResultados, Path rutaPronostico) {
         this.rutaResultados = rutaResultados;
         this.rutaPronostico = rutaPronostico;
     }
 
-    //?buscar
+    //metodos para buscar
     public Ronda buscarRonda(Integer i) {
         for (Ronda r : this.rondas) {
             if (r.getNro() == i) {
@@ -69,6 +69,7 @@ public class LectordeArchivos {
                 Equipo equipo1 = this.buscarEquipo(campos[1]);
                 Equipo equipo2 = this.buscarEquipo(campos[4]);
 
+                //Si el equipo no existe, instanciar uno nuevo
                 if (equipo1 == null) {
                     equipo1 = new Equipo(campos[1]);
                     equipos.add(equipo1);
@@ -77,6 +78,7 @@ public class LectordeArchivos {
                     equipo2 = new Equipo(campos[4]);
                     equipos.add(equipo2);
                 }
+
 
                 for (Equipo equipo : this.equipos) {
                     if (equipo.getNombre().equals(campos[1])) {
@@ -87,18 +89,15 @@ public class LectordeArchivos {
                         equipo2 = equipo;
                     }
                 }
+
+                //instancio un nuevo partido
                 Partido partido = new Partido(equipo1, equipo2);
                 partido.setCantGoles1(Integer.parseInt(campos[2]));
                 partido.setCantGoles2(Integer.parseInt(campos[3]));
 
-
-
-                //Buscar equipo en la lista de equipos en lugar de instanciarlos. Crear metodo que instancie nuevo equipo
-//                de no existir
-
                 Ronda ronda = this.buscarRonda(Integer.parseInt(campos[0]));
 
-
+                //Si no existe una ronda, crearla
                 if (ronda != null) {
                     ronda.agregarPartidos(partido);
 
@@ -107,97 +106,15 @@ public class LectordeArchivos {
                     ronda.agregarPartidos(partido);
                     rondas.add(ronda);
                 }
-
-                //System.out.println(ronda.getNro()+ "    " + partido.getEquipo1().getNombre() + "    " + partido.getCantGoles1() + "    " + partido.getCantGoles2() + "    " + partido.getEquipo2().getNombre());
             }
         }
     }
-
-
-//    public void calcularPuntos() {
-//        int puntos = 0;
-//        int cantPronosticos = 0;
-//        //int i=0;
-//        List<String> lineasPronostico = new ArrayList<>();
-//
-//        Persona persona = new Persona("", 0, 0);
-//        try {
-//            lineasPronostico = Files.readAllLines(rutaPronostico);
-//        } catch (IOException e) {
-//            System.out.println("No se pudo leer la linea de pronosticos...");
-//            System.out.println(e.getMessage());
-//            System.exit(1);
-//        }
-//        boolean primera = true;
-//        for (String lineaPronostico : lineasPronostico) {
-//            if (primera) {
-//                primera = false;
-//            } else {
-//                String[] campos = lineaPronostico.split(";");
-//                Equipo equipo1 = new Equipo(campos[2]);
-//                Equipo equipo2 = new Equipo(campos[6]);
-//                Partido partido = null;
-//
-//                if (!(persona.getNombre().equals(campos[1]))) {
-//                    if (persona.getNombre().equals("")) {
-//                        Persona p = new Persona(campos[1], 0, 0);
-//                        persona = p;
-//                        puntos = 0;
-//                    } else {
-//                        System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje()
-//                                + " y acertó " + persona.getCantPronosticos() + " pronóstico/s");
-//                        Persona p = new Persona(campos[1], 0, 0);
-//                        persona = p;
-//                        puntos = 0;
-//                        cantPronosticos = 0;
-//
-//                    }
-//                }
-//
-//                for (Partido partidoList : partidos) {
-//                    if (partidoList.getEquipo1().getNombre().equals(equipo1.getNombre())
-//                            && partidoList.getEquipo2().getNombre().equals(equipo2.getNombre())) {
-//
-//                        partido = partidoList;
-//
-//                        Equipo equipo = null;
-//                        ResultadoEnum resultado = null;
-//                        if ("X".equals(campos[3])) {
-//                            equipo = equipo1;
-//                            resultado = ResultadoEnum.GANADOR;
-//                        }
-//                        if ("X".equals(campos[4])) {
-//                            equipo = equipo1;
-//                            resultado = ResultadoEnum.EMPATE;
-//                        }
-//                        if ("X".equals(campos[5])) {
-//                            equipo = equipo1;
-//                            resultado = ResultadoEnum.PERDEDOR;
-//                        }
-//                        Pronostico pronostico = new Pronostico(partido, equipo, resultado);
-//                        //sumar los puntos correspondientes
-//                        puntos += pronostico.puntos();
-//                        cantPronosticos += pronostico.sumarPronosticos();
-//                        persona.setPuntaje(puntos);
-//                        persona.setCantPronosticos(cantPronosticos);
-//
-//                    }
-//                }
-//
-//            }
-//
-//
-//        }
-//
-//        // mostrar los puntos
-//        System.out.println("El puntaje de " + persona.getNombre() + " fue " + persona.getPuntaje()
-//                + " y acertó " + persona.getCantPronosticos() + " pronóstico/s");
-//    }
 
     public void leerPronosticos() {
         List<String> lineasPronostico = new ArrayList<>();
         int puntos = 0;
 
+        Ronda rondapatron = new Ronda(1);
         try {
             lineasPronostico = Files.readAllLines(rutaPronostico);
         } catch (IOException e) {
@@ -214,6 +131,7 @@ public class LectordeArchivos {
                 Equipo equipo1 = this.buscarEquipo(campos[2]);
                 Equipo equipo2 = this.buscarEquipo(campos[6]);
 
+
                 if (equipo1!=null){
                     equipo1 = new Equipo(campos[2]);
                 }
@@ -222,98 +140,69 @@ public class LectordeArchivos {
                 }
 
                 Ronda ronda = new Ronda(Integer.parseInt(campos[0]));
+
                 for (Ronda rondaLista : rondas) {
-                    if (rondaLista.getNro().equals(ronda.getNro())){
+                    if (rondaLista.getNro().equals(ronda.getNro())){ //si la ronda que está en la lista es igual a la ronda que lee en el pronostico...
                         ronda=rondaLista;
                     }
                 }
 
+                if(rondapatron.getNro()!=ronda.getNro()){ //si se detecta un cambio de ronda, que imprima los puntajes de la ronda que acaba de finalizar
+                    System.out.println("Resultados de la ronda " + rondapatron.getNro());
+                    for(int i=0; i<this.personas.size(); i++) {
+                     System.out.println(personas.get(i).getNombre());
+                     System.out.println(personas.get(i).getPuntaje());
+                    }
+                    rondapatron.setNro(ronda.getNro());
+                }
+
                 Persona persona = this.buscarPersona(campos[1]);
 
-                if(persona==null){
-                   persona= new Persona(campos[1]);
+                if(persona==null){ //si no existe la persona, crearla, añadirla a la lista y reiniciar la variable puntos
+                   persona= new Persona(campos[1], ronda.getNro());
                    this.personas.add(persona);
                    puntos=0;
+                }
+
+                if(persona.getNroRonda()!=ronda.getNro()){ //si la persona ya existe pero cambió la ronda, que se reinicien los puntos
+                    persona.setNroRonda(ronda.getNro());
+                    puntos = 0;
                 }
 
                 Partido partido = ronda.buscarPartido(equipo1, equipo2);
                 Equipo equipoPred = null;
                 ResultadoEnum resultadoPred = null;
 
-                if("X".equals(campos[3])){
+                if("X".equals(campos[3])){  //si la X está en gana1
                     equipoPred = partido.getEquipo1();
                     resultadoPred = ResultadoEnum.GANADOR;
 
                 }
-                if("X".equals(campos[4])){
+                if("X".equals(campos[4])){  //si la X está en empate
                     equipoPred = partido.getEquipo1();
                     resultadoPred = ResultadoEnum.EMPATE;
                 }
 
-                if("X".equals(campos[5])){
+                if("X".equals(campos[5])){  //si la X está en gana2
                     equipoPred = partido.getEquipo1();
                     resultadoPred = ResultadoEnum.PERDEDOR;
                 }
 
-
-                //Equipo equipoPred = this.leerEquipopronosticado(campos, partido);
-
-               // Equipo equipoGanador = partido.calcularGanador(partido);
-
                 Pronostico pronostico = new Pronostico(partido, equipoPred, persona);
 
+                //sumamos los puntos que correspondan y los metemos en el puntaje de la persona
                 puntos += pronostico.puntos(resultadoPred);
                 pronostico.getPersona().setPuntaje(puntos);
 
-
                 this.pronosticos.add(pronostico);
-
-
-
-
-
-
-
-
-                //Ronda ronda = this.buscarRonda(Integer.parseInt(campos[0]));
-
-                //Dentro de la clase ronda, hacer un método que reciba dos equipos por parámetro y que me devuelva el partido
-//                con esos dos equipos
-                //this.buscarequipo para buscar equipo ganador
-                //this.buscarPersona para buscar persona ganadora
-                //Partido partido = ronda.buscarPartido(eq1,eq2)
-                //instanciar nuevo pronostico con estos datos y agregarlo a la lista
-//                Pronostico pronostico = new Pronostico(partido, equipoganador, persona);
-
             }
         }
-        for(int k=0; k<=11; k++) {
+
+        //imprimo los resultados de la ronda final
+        System.out.println("Resultados de la ronda " + rondapatron.getNro());
+        for(int k=0; k<this.personas.size(); k++) {
             System.out.println(personas.get(k).getNombre());
             System.out.println(personas.get(k).getPuntaje());
         }
     }
-    /*
-    public Equipo leerEquipopronosticado(String[] campos, Partido partido){
-        if("X".equals(campos[3])){
-            return partido.getEquipo1();
-        }
-        if("X".equals(campos[5])){
-            return partido.getEquipo2();
-        }
-        return null;
-    }
-*/
 }
-
-
-
-
-
-
-//    private int calcularPuntos(){
-//
-//    }
-
-
-
-
