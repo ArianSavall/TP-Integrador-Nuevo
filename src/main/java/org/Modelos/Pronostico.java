@@ -45,7 +45,7 @@ public class Pronostico {
     public int puntos(ResultadoEnum resultado) {
         // this.resultado -> pred
 
-        ResultadoEnum resultadoReal = partido.resultado(equipo);
+        ResultadoEnum resultadoReal = partido.obtenerResultadoReal(equipo);
         if (resultado.equals(resultadoReal)) {
             return 1;
         } else {

@@ -196,6 +196,7 @@ public class LectordeArchivos {
 
     public void leerPronosticos() {
         List<String> lineasPronostico = new ArrayList<>();
+        int puntos = 0;
 
         try {
             lineasPronostico = Files.readAllLines(rutaPronostico);
@@ -232,32 +233,38 @@ public class LectordeArchivos {
                 if(persona==null){
                    persona= new Persona(campos[1]);
                    this.personas.add(persona);
+                   puntos=0;
                 }
 
                 Partido partido = ronda.buscarPartido(equipo1, equipo2);
                 Equipo equipoPred = null;
-                ResultadoEnum resultado = null;
+                ResultadoEnum resultadoPred = null;
 
                 if("X".equals(campos[3])){
                     equipoPred = partido.getEquipo1();
-                    resultado = ResultadoEnum.GANADOR;
+                    resultadoPred = ResultadoEnum.GANADOR;
 
                 }
                 if("X".equals(campos[4])){
                     equipoPred = partido.getEquipo1();
-                    resultado = ResultadoEnum.EMPATE;
+                    resultadoPred = ResultadoEnum.EMPATE;
                 }
 
                 if("X".equals(campos[5])){
                     equipoPred = partido.getEquipo1();
-                    resultado = ResultadoEnum.PERDEDOR;
+                    resultadoPred = ResultadoEnum.PERDEDOR;
                 }
+
 
                 //Equipo equipoPred = this.leerEquipopronosticado(campos, partido);
 
                // Equipo equipoGanador = partido.calcularGanador(partido);
 
                 Pronostico pronostico = new Pronostico(partido, equipoPred, persona);
+
+                puntos += pronostico.puntos(resultadoPred);
+                pronostico.getPersona().setPuntaje(puntos);
+
 
                 this.pronosticos.add(pronostico);
 
@@ -279,6 +286,10 @@ public class LectordeArchivos {
 //                Pronostico pronostico = new Pronostico(partido, equipoganador, persona);
 
             }
+        }
+        for(int k=0; k<=11; k++) {
+            System.out.println(personas.get(k).getNombre());
+            System.out.println(personas.get(k).getPuntaje());
         }
     }
     /*

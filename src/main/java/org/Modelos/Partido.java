@@ -45,7 +45,7 @@ public class Partido {
         this.cantGoles2 = cantGoles2;
     }
 
-    public ResultadoEnum resultado(Equipo equipo) {
+    public ResultadoEnum obtenerResultadoReal(Equipo equipo) {
         if (cantGoles1 == cantGoles2) {
             return ResultadoEnum.EMPATE;
         }
