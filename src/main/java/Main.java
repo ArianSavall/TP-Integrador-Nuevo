@@ -8,11 +8,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        try {     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");     System.out.println("Driver OK"); } catch (ClassNotFoundException e) {     System.out.println(e); }
-//        LectordeArchivos lectordeArchivos = new LectordeArchivos();
-//        lectordeArchivos.leerResultados();
-        //Ronda puntos = new Ronda ("1", partidos);
-//        lectordeArchivos.leerPronosticos();
+        //       try {     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");     System.out.println("Driver OK"); } catch (ClassNotFoundException e) {     System.out.println(e); }
+        LectordeArchivos lectordeArchivos = new LectordeArchivos(Path.of(args[0]), Path.of(args[1]));
+        lectordeArchivos.leerResultados();
+        lectordeArchivos.leerPronosticos();
 
 //lista{Argentina,Polonia,Mexico,Arabia}
 
