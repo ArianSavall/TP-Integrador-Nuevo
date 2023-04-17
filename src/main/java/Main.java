@@ -1,20 +1,12 @@
-import org.Modelos.Partido;
-import org.Modelos.Ronda;
-import org.utilities.LectordeArchivos;
-
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import org.utilities.LectorDB;
+import org.utilities.LectorCSV;
 
 public class Main {
     public static void main(String[] args) {
-        LectordeArchivos lectordeArchivos = new LectordeArchivos();
-        lectordeArchivos.leerResultados();
-//        Ronda puntos = new Ronda ("1", partidos);
-        lectordeArchivos.leerPronosticos();
+        LectorCSV lectorCSV = new LectorCSV();
+        lectorCSV.leerResultados();
 
-//lista{Argentina,Polonia,Mexico,Arabia}
-
-
+        LectorDB lectorDB = new LectorDB(lectorCSV);
+        lectorDB.leerPronosticos();
     }
 }

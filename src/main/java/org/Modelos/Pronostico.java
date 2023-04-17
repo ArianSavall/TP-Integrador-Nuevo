@@ -51,15 +51,15 @@ public class Pronostico {
         } else {
             return 0;
         }
-//
-//    }
-//    public int sumarPronosticos(){
-//        ResultadoEnum resultadoReal = partido.resultado(equipo);
-//        if (resultado.equals(resultadoReal)) {
-//            return 1 ;
-//        } else {
-//            return 0;
-//        }
-//    }
+
     }
+    public int sumarPronosticoAcertado(ResultadoEnum resultado){
+        ResultadoEnum resultadoReal = partido.obtenerResultadoReal(equipo);
+        if (resultado.equals(resultadoReal)) {
+            return 1 ;
+        } else {
+            return 0;
+        }
+    }
+
 }
