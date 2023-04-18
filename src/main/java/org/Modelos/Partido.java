@@ -45,7 +45,11 @@ public class Partido {
         this.cantGoles2 = cantGoles2;
     }
 
+<<<<<<< HEAD
     public ResultadoEnum resultado(Equipo equipo) {
+=======
+    public ResultadoEnum obtenerResultadoReal(Equipo equipo) {
+>>>>>>> c7a5b4cf02b1e86e0feaf1a94770077fcf8afcc6
         if (cantGoles1 == cantGoles2) {
             return ResultadoEnum.EMPATE;
         }

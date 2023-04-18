@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 Ronda; Equipo 1; Cant. goles 1; Cant. goles 2; Equipo 2;
 1;Argentina;1;2;Arabia Saudita;
 1;Polonia;0;0;Mexico;
 1;Argentina;2;0;Mexico;
 1;Arabia Saudita;0;2;Polonia;
+=======
+Ronda; Equipo 1; Cant. goles 1; Cant. goles 2; Equipo 2;Fase;
+1;Argentina;1;2;Arabia Saudita;1;
+1;Polonia;0;0;Mexico;1;
+1;Argentina;2;0;Mexico;1;
+1;Arabia Saudita;0;2;Polonia;1;
+2;Argentina;2;0;Polonia;1;
+2;Tunez;1;0;Francia;1;
+2;Gales;0;3;Inglaterra;1;
+2;Ghana;0;2;Uruguay;1;
+>>>>>>> c7a5b4cf02b1e86e0feaf1a94770077fcf8afcc6
