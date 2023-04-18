@@ -45,29 +45,12 @@ public class Pronostico {
     public int puntos(ResultadoEnum resultado) {
         // this.resultado -> pred
 
-<<<<<<< HEAD
-        ResultadoEnum resultadoReal = partido.resultado(equipo);
-=======
         ResultadoEnum resultadoReal = partido.obtenerResultadoReal(equipo);
->>>>>>> c7a5b4cf02b1e86e0feaf1a94770077fcf8afcc6
         if (resultado.equals(resultadoReal)) {
             return 1;
         } else {
             return 0;
         }
-<<<<<<< HEAD
-//
-//    }
-//    public int sumarPronosticos(){
-//        ResultadoEnum resultadoReal = partido.resultado(equipo);
-//        if (resultado.equals(resultadoReal)) {
-//            return 1 ;
-//        } else {
-//            return 0;
-//        }
-//    }
-    }
-=======
 
     }
     public int sumarPronosticoAcertado(ResultadoEnum resultado){
@@ -79,5 +62,4 @@ public class Pronostico {
         }
     }
 
->>>>>>> c7a5b4cf02b1e86e0feaf1a94770077fcf8afcc6
 }
