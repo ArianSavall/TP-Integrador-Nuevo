@@ -2,25 +2,35 @@ package org.utilities;
 
 import org.Modelos.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.utilities.LectorDB.*;
 
 public class LectorCSV {
 
-    Connection conexion = null;
-    Statement consulta = null;
-
+    private Path rutaResultados;
+    private Path rutaConfig;
     private List<Ronda> rondas = new ArrayList<>();
     private List<Equipo> equipos = new ArrayList<>();
 
 
+    public LectorCSV(Path rutaResultados, Path rutaConfig) {
+        this.rutaResultados = rutaResultados;
+        this.rutaConfig = rutaConfig;
+    }
+
+    public LectorCSV() {
+    }
+
     public List<Ronda> getRondas() {
         return rondas;
     }
-
 
 
     //metodos para buscar
@@ -32,6 +42,7 @@ public class LectorCSV {
         }
         return null;
     }
+
     public Equipo buscarEquipo(String i) {
         for (Equipo e : this.equipos) {
             if (e.getNombre().equals(i)) {
@@ -42,94 +53,86 @@ public class LectorCSV {
     }
 
 
-
-
-    public void leerResultados(){
-
+    public void leerResultados() {
+        List<String> lineasResultado = new ArrayList<>();
         try {
-            //abrir conexion
-            conexion = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            //Ejecutar consulta
-            consulta = conexion.createStatement();
-            String sql;
-            sql = "select * from nuevo_tp_integrador.resultados";
-
-            ResultSet resultado = consulta.executeQuery(sql);
-
-            while (resultado.next()) {
-
-                int rondaDB = resultado.getInt("Ronda");
-                String equipo1DB = resultado.getString("Equipo 1");
-                int cantgoles1DB = resultado.getInt("Cant. goles 1");
-                int cantgoles2DB = resultado.getInt("Cant. goles 2");
-                String equipo2DB = resultado.getString("Equipo 2");
-
-                //todo para chequear que lea bien
-               // System.out.println(rondaDB + "   " + equipo1DB +"   " + cantgoles1DB + "   " + cantgoles2DB + "   " + "   " + equipo2DB);
-
-                Equipo equipo1 = this.buscarEquipo(equipo1DB);
-                Equipo equipo2 = this.buscarEquipo(equipo2DB);
+            lineasResultado = Files.readAllLines(rutaResultados);
+        } catch (
+                IOException e) {
+            System.out.println("No se pudo leer la linea de resultados...");
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+        boolean primera = true;
+        for (String lineaResultado : lineasResultado) {
+            if (primera) {
+                primera = false;
+            } else {
+                String[] campos = lineaResultado.split(";");
+                Equipo equipo1 = this.buscarEquipo(campos[1]);
+                Equipo equipo2 = this.buscarEquipo(campos[4]);
 
                 //Si el equipo no existe, instanciar uno nuevo
                 if (equipo1 == null) {
-                    equipo1 = new Equipo(equipo1DB);
+                    equipo1 = new Equipo(campos[1]);
                     equipos.add(equipo1);
                 }
                 if (equipo2 == null) {
-                    equipo2 = new Equipo(equipo2DB);
+                    equipo2 = new Equipo(campos[4]);
                     equipos.add(equipo2);
                 }
 
 
                 for (Equipo equipo : this.equipos) {
-                    if (equipo.getNombre().equals(equipo1DB)) {
+                    if (equipo.getNombre().equals(campos[1])) {
                         equipo1 = equipo;
                     }
 
-                    if (equipo.getNombre().equals(equipo2DB)) {
+                    if (equipo.getNombre().equals(campos[4])) {
                         equipo2 = equipo;
                     }
                 }
 
                 //instancio un nuevo partido
                 Partido partido = new Partido(equipo1, equipo2);
-                partido.setCantGoles1(cantgoles1DB);
-                partido.setCantGoles2(cantgoles2DB);
+                partido.setCantGoles1(Integer.parseInt(campos[2]));
+                partido.setCantGoles2(Integer.parseInt(campos[3]));
 
-                Ronda ronda = this.buscarRonda(rondaDB);
+                Ronda ronda = this.buscarRonda(Integer.parseInt(campos[0]));
 
                 //Si no existe una ronda, crearla
                 if (ronda != null) {
                     ronda.agregarPartidos(partido);
 
                 } else {
-                    ronda = new Ronda(rondaDB);
+                    ronda = new Ronda(Integer.parseInt(campos[0]));
                     ronda.agregarPartidos(partido);
                     rondas.add(ronda);
                 }
             }
-            // Esto se utiliza par cerrar la conexión con la base de datos
-            resultado.close();
-            consulta.close();
-            conexion.close();
-        } catch (SQLException se) {
-            // Execpción ante problemas de conexión
-            se.printStackTrace();
         }
-        finally {
-            // Esta sentencia es para que ante un problema con la base igual se cierren las conexiones
-            try {
-                if (consulta != null)
-                    consulta.close();
-            } catch (SQLException se2) {
-            }
-            try {
-                if (conexion != null)
-                    conexion.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+    }
+
+    public List<String> leerConfig() {
+        List<String> lineasConfig = new ArrayList<>();
+        List<String> datosUsuario = new ArrayList<>();
+        try {
+            lineasConfig = Files.readAllLines(rutaConfig);
+        } catch (
+                IOException e) {
+            System.out.println("No se pudo leer la linea de configuraciones...");
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+        boolean primera = true;
+        for (String lineaConfig : lineasConfig) {
+            if(primera){
+                primera=false;
+            }else{
+                String[] campos = lineaConfig.split(";");
+                datosUsuario.addAll(Arrays.asList(campos).subList(0, 6));
             }
         }
+        return datosUsuario;
     }
 }

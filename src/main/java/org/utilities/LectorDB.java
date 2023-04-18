@@ -9,17 +9,15 @@ import java.util.Objects;
 
 public class LectorDB {
 
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/nuevo_tp_integrador";
-    // Credenciales credentials
-    public static final String USER = "root";
-    public static final String PASS = "1234";
+
 
     Connection conexion = null;
     Statement consulta = null;
+    LectorCSV lectorCSV= new LectorCSV();
     private List<Pronostico> pronosticos = new ArrayList<>();
     private List<Persona> personas = new ArrayList<>();
 
-    LectorCSV lectorCSV = new LectorCSV();
+
     public LectorDB(LectorCSV lectorCSV) {
         this.lectorCSV = lectorCSV;
     }
@@ -33,14 +31,14 @@ public class LectorDB {
         return null;
     }
 
-    public void leerPronosticos() {
+    public void leerPronosticos(List<String> datosUsuario) {
         int puntos = 0;
         int cantPronosticosAcertados = 0;
         Ronda rondapatron = new Ronda(1);
         try {
 
             //abrir conexion
-            conexion = DriverManager.getConnection(DB_URL, USER, PASS);
+            conexion = DriverManager.getConnection(datosUsuario.get(0), datosUsuario.get(1), datosUsuario.get(2));
             //Ejecutar consulta
             consulta = conexion.createStatement();
 

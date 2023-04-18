@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b015a6b4-7050-488b-ab56-85827adc4cd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/utilities/LectorCSV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/utilities/LectorDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Modelos/Pronostico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Modelos/Pronostico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utilities/Conector_SQL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utilities/LectordeArchivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/utilities/LectorCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utilities/LectorCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/utilities/LectorDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utilities/LectorDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Resultados.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Resultados.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pronostico.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
     <configuration name="Rutas" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Nuevo_TP_Integrador" />
-      <option name="PROGRAM_PARAMETERS" value="src\main\resources\Resultados.csv src\main\resources\pronostico.csv" />
+      <option name="PROGRAM_PARAMETERS" value="src\main\resources\Resultados.csv src\main\resources\config.csv" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,5 +89,16 @@
       <updated>1680299483408</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
